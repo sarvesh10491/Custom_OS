@@ -1,5 +1,5 @@
 #include "screen.h"
-#include "port.h"
+#include "../include/port.h"
 
 char *screen = (char*)VIDEO_ADDRESS;
 int screen_size = MAX_COLS * MAX_ROWS;

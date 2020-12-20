@@ -3,11 +3,11 @@
 # $^ = all dependencies
 
 # Automatically generate lists of sources using wildcards .
-C_SOURCES = $(wildcard kernel/*.c drivers/*.c)
-C_HEADERS = $(wildcard kernel/*.h drivers/*.h)
+C_SOURCES = $(wildcard kernel/*.c kernel/cpu/*.c drivers/*.c include/*.c)
+C_HEADERS = $(wildcard kernel/*.h kernel/cpu/*.h drivers/*.h include/*.h)
 
 # Convert the *.c filenames to *.o to give a list of object files to build
-OBJ = ${C_SOURCES:.c=.o}
+OBJ = ${C_SOURCES:.c=.o kernel/cpu/gdtS.o}
 
 # # Defaul build target
 # all : os_image
