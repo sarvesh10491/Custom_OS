@@ -1,6 +1,6 @@
 #include "../drivers/screen.h"
-#include "../include/port.h"
 #include "./cpu/gdt.h"
+#include "./cpu/idt.h"
 
 void init_screen(){
 	char *str1 = "RandomOS kernel";
@@ -11,9 +11,18 @@ void init_screen(){
 	kprint_at(str2,5,20);
 }
 
+void init_descriptor_tables(){
+	init_gdt();
+	init_idt();
+}
+
 void kmain(void)
 {
-	init_gdt();
+	init_descriptor_tables();
 	init_screen();
+	/* Test the interrupts */
+    __asm__ __volatile__("int $2");
+    __asm__ __volatile__("int $3");
+
 	return;
 }

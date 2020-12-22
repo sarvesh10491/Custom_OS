@@ -3,11 +3,11 @@
 # $^ = all dependencies
 
 # Automatically generate lists of sources using wildcards .
-C_SOURCES = $(wildcard kernel/*.c kernel/cpu/*.c drivers/*.c include/*.c)
-C_HEADERS = $(wildcard kernel/*.h kernel/cpu/*.h drivers/*.h include/*.h)
+C_SOURCES = $(wildcard kernel/*.c kernel/cpu/*.c drivers/*.c include/*.c lib/*.c)
+C_HEADERS = $(wildcard kernel/*.h kernel/cpu/*.h drivers/*.h include/*.h lib/*.h)
 
 # Convert the *.c filenames to *.o to give a list of object files to build
-OBJ = ${C_SOURCES:.c=.o boot/boot.o kernel/cpu/gdtS.o}
+OBJ = ${C_SOURCES:.c=.o boot/boot.o kernel/cpu/gdtS.o kernel/cpu/idtS.o kernel/cpu/interruptS.o}}
 
 # This builds the binary of our kernel from two object files :
 # - The kernel_entry , which jumps to main () in our kernel
@@ -32,4 +32,4 @@ run : os_image
 
 clean :
 	rm -rf os_image
-	rm -rf kernel/*.o kernel/cpu/*.o boot/*.o drivers/*.o include/*.o
+	rm -rf kernel/*.o kernel/cpu/*.o boot/*.o drivers/*.o include/*.o lib/*.o
