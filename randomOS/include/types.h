@@ -2,7 +2,7 @@
 #define TYPES_H
 
 // Some nice typedefs, to standardise sizes across platforms.
-// These typedefs are written for 32-bit X86.
+// These typedefs are written for 32-bit x86.
 typedef unsigned int   u32int;
 typedef          int   s32int;
 typedef unsigned short u16int;

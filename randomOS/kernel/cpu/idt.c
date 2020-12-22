@@ -1,7 +1,6 @@
 // Initialises the IDT
 
 #include "idt.h"
-#include "../../lib/string.h"
 
 // Lets us access our ASM functions from our C code.
 extern void idt_flush(u32int);

@@ -4,7 +4,7 @@
 
 void init_screen(){
 	char *str1 = "RandomOS kernel";
-	char *str2 = "version : v1.0\n";
+	char *str2 = "version : v1.0\n\n";
 
 	clear_screen();
 	kprint_at(str1,3,35);
