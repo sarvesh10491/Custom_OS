@@ -42,7 +42,7 @@ char *exception_messages[] = {
 
 // This gets called from our ASM interrupt handler stub.
 void isr_handler(registers_t r){
-    kprint("received interrupt: ");
+    kprint("received interrupt: \n");
    //  char s[3];
    //  int_to_ascii(r.int_no, s);
    //  kprint(s);
