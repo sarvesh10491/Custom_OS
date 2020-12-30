@@ -1,4 +1,5 @@
 #include "../drivers/screen.h"
+#include "../lib/timer.h"
 #include "./cpu/gdt.h"
 #include "./cpu/idt.h"
 
@@ -20,9 +21,12 @@ void kmain(void)
 {
 	init_descriptor_tables();
 	init_screen();
-	/* Test the interrupts */
+
+	// Test the interrupts
 	__asm__ __volatile__("int $2");
 	__asm__ __volatile__("int $3");
+
+	init_timer(50); 	// Initialise timer to 50Hz
 
 	return;
 }

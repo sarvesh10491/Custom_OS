@@ -1,5 +1,45 @@
 #include "interrupt.h"
 
+/* To print the message which defines every exception */
+// extern char *exception_messages[];
+char *exception_messages[] = {
+    "Division By Zero",
+    "Debug",
+    "Non Maskable Interrupt",
+    "Breakpoint",
+    "Into Detected Overflow",
+    "Out of Bounds",
+    "Invalid Opcode",
+    "No Coprocessor",
+
+    "Double Fault",
+    "Coprocessor Segment Overrun",
+    "Bad TSS",
+    "Segment Not Present",
+    "Stack Fault",
+    "General Protection Fault",
+    "Page Fault",
+    "Unknown Interrupt",
+
+    "Coprocessor Fault",
+    "Alignment Check",
+    "Machine Check",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved"
+};
+
 // This gets called from our ASM interrupt handler stub for ISR.
 void isr_handler(registers_t r){
    kprint("Received interrupt : #");
@@ -10,6 +50,7 @@ void isr_handler(registers_t r){
    kprint(exception_messages[r.int_no]);
    kprint("]\n");
 }
+
 
 // This gets called from our ASM interrupt handler stub for IRQ.
 void irq_handler(registers_t r){
@@ -26,6 +67,6 @@ void irq_handler(registers_t r){
 }
 
 
-void register_interrupt_handler(u8int n, isr_t handler) {
-    interrupt_handlers[n] = handler;
+void register_interrupt_handler(u8int n, isr_t handler){
+   interrupt_handlers[n] = handler;
 }
